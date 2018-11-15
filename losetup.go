@@ -87,7 +87,8 @@ func AttachDevice(filePath string) (*Device, error) {
 	}
 	oldDev := oldDevs.GetDeviceByFile(filePath)
 	if oldDev != nil {
-		return nil, fmt.Errorf("file %q already attached to %q, attached twice???", oldDev.BackFile, oldDev.Name)
+		//return nil, fmt.Errorf("file %q already attached to %q, attached twice???", oldDev.BackFile, oldDev.Name)
+		return oldDev, nil
 	}
 	_, err = NewLosetupCommand().AddArgs("-f", filePath).Run()
 	if err != nil {
