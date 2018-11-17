@@ -62,7 +62,7 @@ func NewLosetupCommand() *LosetupCommand {
 }
 
 func ListDevices() (*Devices, error) {
-	cmd, err := NewLosetupCommand().AddArgs("-l", "-J").Run()
+	cmd, err := NewLosetupCommand().AddArgs("-l", "-O", "NAME,BACK-FILE,SIZELIMIT,RO").Run()
 	if err != nil {
 		return nil, err
 	}
